@@ -45,7 +45,7 @@
     }
     $query = "UPDATE blogs SET title='$title', creator='$creator', date='$date', description='$description', image='$image' WHERE id=$id";
     } else {
-        $query = "UPDATE blogs SET title='$title', creator='$creator', date='$date', description='$description' image='$image' WHERE id=$id";
+        $query = "UPDATE blogs SET title='$title', creator='$creator', date='$date', description='$description', image='$image' WHERE id=$id";
     }
 
     if($connection->query($query)) {
@@ -63,10 +63,10 @@
         <form method="POST" enctype="multipart/form-data">
             <h3>Update blog</h3>
             
-            <input type="text" name="title" value="<?php echo $row['title'] ?>" class="box">
-            <input type="text" name="creator" value="<?php echo $row['creator'] ?>" class="box">
-            <input type="date" id="birth_date" name="birth_date" class="box">
-            <textarea name="description" value="<?php echo $row['description'] ?>" class="box"></textarea>
+            <input type="text" name="title" value="<?php echo htmlspecialchars($row['title']); ?>" class="box">
+            <input type="text" name="creator" value="<?php echo htmlspecialchars($row['creator']); ?>" class="box">
+            <input type="date" name="date" value="<?php echo htmlspecialchars(date('Y-m-d', strtotime($row['date']))); ?>" class="box">
+            <textarea name="description" class="box"><?php echo htmlspecialchars($row['description']); ?></textarea>
             <input type="file" name="image" class="box">
             <input type="submit" name="submit" value="Update Now" class="btn">
         </form>

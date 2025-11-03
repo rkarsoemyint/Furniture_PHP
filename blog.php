@@ -61,9 +61,10 @@
                             <p>' . htmlspecialchars($row['description']) . '</p>
                             <a href="blog_update.php?id=' . $row['id'] .'" class="btn"><i class ="fas fa-edit"></i></a>
                             <a href="blog_delete.php?id=' . $row['id'] .'" class="btn" onclick="return confirm(\'Are you sure to delete this?\')"><i class = "fas fa-trash"></i></a>
+                            
                             <div class="icons">
-                                <a href="#"> <i class="fas fa-calendar"></i> 21st may, 2023</a>
-                                <a href="#"> <i class="fas fa-user"></i> by admin</a>
+                                <a href="#"><i class="fas fa-calendar"></i> ' . date('jS M, Y', strtotime($row['date'])) . '</a>
+                                <a href="#"><i class="fas fa-user"></i> by ' . htmlspecialchars($row['creator']) . '</a>
                             </div>
                         </div>
                     </div>';
